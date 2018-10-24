@@ -18,11 +18,11 @@ public class TimeMapperTests {
     @Setter(onMethod_ = {@Autowired})
     private TimeMapper timeMapper;
 
-    /*@Test
+    @Test
     public void testGetTime(){
         log.info(timeMapper.getClass().getName());
         log.info(timeMapper.getTime());
-    }*/
+    }
 
     @Test
     public void testGetTiem2(){

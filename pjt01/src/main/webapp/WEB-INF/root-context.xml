@@ -6,8 +6,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 
     <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"/>
+        <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE"/>
         <property name="username" value="woojin"/>
         <property name="password" value="1234"/>
     </bean>
