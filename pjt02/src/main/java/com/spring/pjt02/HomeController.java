@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 
@@ -125,5 +126,26 @@ public class HomeController {
         headers.add("Content-Type", "application/json;charset=UTF-8");
 
         return new ResponseEntity<>(msg, headers, HttpStatus.OK);
+    }
+
+    //파일 업로드 뷰
+    // (/sample/test12)
+    @RequestMapping("/test12")
+    public String test12(){
+        log.info("test12................");
+
+        return "test12";
+    }
+
+    //파일 업로드 (최종업로드는 byte[]처리해야함)
+    // (/sample/test13)
+    @RequestMapping("/test13")
+    public void test13(ArrayList<MultipartFile> files){
+
+        files.forEach(file -> {
+            log.info("----------------------------------");
+            log.info("name:" + file.getOriginalFilename());
+            log.info("size:" + file.getSize());
+        });
     }
 }
