@@ -34,7 +34,7 @@
                     <c:forEach items="${list}" var="board">
                         <tr>
                             <td><c:out value="${board.bno}"/> </td>
-                            <td><c:out value="${board.title}"/> </td>
+                            <td><a href="/board/get?bno=<c:out value="${board.bno}"/>"><c:out value="${board.title}"/></a></td>
                             <td><c:out value="${board.writer}"/> </td>
                             <td><fmt:formatDate pattern="yyy-MM-dd" value="${board.regdate}"/> </td>
                             <td><fmt:formatDate pattern="yyy-MM-dd" value="${board.updateDate}"/> </td>
@@ -77,11 +77,14 @@
         //redirect처리할때 RedurectAttridutes를 사용했는데 1회성 데이터이므로 url접근이나 새로고침시 resurlt값은 없다.
         var result = '<c:out value="${result}"/>';
 
-        <!-- 모달 -->
+        //모달
         checkModal(result);
 
+        //뒤로가기 대응
+        history.replaceState({},null,null);
+
         function checkModal(result) {
-            if(result === ''){
+            if(result === '' || history.state){
                 return;
             }
 
