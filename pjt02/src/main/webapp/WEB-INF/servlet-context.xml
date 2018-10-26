@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- This tag registers the DefaultAnnotationHandlerMapping and
+         AnnotationMethodHandlerAdapter beans that are required for Spring MVC  -->
+    <mvc:annotation-driven />
+    <!-- This tag allows for mapping the DispatcherServlet to "/" -->
+    <mvc:default-servlet-handler />
+
+    <!-- Process annotations on registered beans like @Autowired... -->
+    <context:annotation-config/>
+    <!-- 컴포넌트 스캔 -->
+    <context:component-scan base-package="com.spring.pjt02" />
+    <context:component-scan base-package="com.spring.excpetion" />
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!-- (전달시 최대 크기) 1024 * 1024 * 10 bytes = 10MB -->
+        <property name="maxUploadSize" value="104857560"/>
+        <!-- (하나의 파일 최대 크기) 1024 * 1024 * 2 bytes = 2MB -->
+        <property name="maxUploadSizePerFile" value="2097152"/>
+        <property name="uploadTempDir" value="file:/C:/upload/tmp"/>
+        <property name="maxInMemorySize" value="10485756"/>
+    </bean>
+
+</beans>
