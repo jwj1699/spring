@@ -15,7 +15,9 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
-            <div class="panel-heading">Board List Page</div>
+            <div class="panel-heading">Board List Page
+                <button id="regBtn" type="button" class="btn btn-xs pull-right">Register New Board</button>
+            </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <table class="table table-striped table-bordered table-hover">
@@ -70,12 +72,12 @@
 <!-- /.row -->
 <%@include file="../includes/footer.jsp"%>
 
-<!-- 모달 -->
 <script type="text/javascript">
     $(document).ready(function () {
         //redirect처리할때 RedurectAttridutes를 사용했는데 1회성 데이터이므로 url접근이나 새로고침시 resurlt값은 없다.
         var result = '<c:out value="${result}"/>';
 
+        <!-- 모달 -->
         checkModal(result);
 
         function checkModal(result) {
@@ -88,5 +90,9 @@
             }
             $('#myModal').modal("show");
         }
+
+        $('#regBtn').on("click", function () {
+            self.location = "/board/register";
+        })
     })
 </script>
