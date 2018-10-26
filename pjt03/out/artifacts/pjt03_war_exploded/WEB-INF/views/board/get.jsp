@@ -35,8 +35,12 @@
                     <label>Writer</label>
                     <input class="form-control" name="writer" value="<c:out value="${board.writer}"/>" readonly="readonly">
                 </div>
-                <button data-oper="modify" class="btn btn-default"><a href="/board/modify?bno=<c:out value="${board.bno}"/>">Modify</a></button>
-                <button data-oper="list" class="btn btn-default"><a href="/board/list">List</a></button>
+                <button data-oper="modify" class="btn btn-default">Modify</button>
+                <button data-oper="list" class="btn btn-default">List</button>
+
+                <form id="operForm" action="/board/modify" method="get">
+                    <input type="hidden" id="bno" name="bno" value="<c:out value="${board.bno}"/>">
+                </form>
 
             </div>
             <!-- /.panel-body -->
@@ -46,3 +50,22 @@
 </div>
 <!-- /.row -->
 <%@include file="../includes/footer.jsp"%>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var operForm = $("#operForm");
+
+        //modify면 bno값을 같이 전달
+        $("button[data-oper='modify']").on("click", function (e) {
+            operForm.attr("action", "/board/modify").submit();
+        });
+
+        //list면 bno값 삭제후 리스트로 이동
+        $("button[data-oper='list']").on("click", function (e) {
+            operForm.find("#bno").remove();
+            operForm.attr("action", "/board/list").submit();
+        });
+    });
+
+</script>
