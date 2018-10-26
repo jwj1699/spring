@@ -5,7 +5,10 @@
     <!-- 콘솔 로그 -->
     <appender name="infoConsole" class="org.apache.log4j.ConsoleAppender">
         <layout class="org.apache.log4j.PatternLayout">
+            <!-- basic
             <param name="ConversionPattern" value="[%5p] %d{hh\:mm s} (%F\:%L) %c{1}.%M \: %m%n" />
+            -->
+            <param name="ConversionPattern" value="[%5p] (%F\:%L) %c{1}.%M \: %m%n" />
         </layout>
     </appender>
 
