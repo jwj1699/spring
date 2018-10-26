@@ -19,6 +19,7 @@
     <context:annotation-config/>
     <!-- 컴포넌트 스캔 -->
     <context:component-scan base-package="com.spring.pjt02" />
+    <context:component-scan base-package="com.spring.excpetion" />
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
