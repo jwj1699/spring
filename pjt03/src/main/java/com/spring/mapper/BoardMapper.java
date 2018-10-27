@@ -2,12 +2,15 @@ package com.spring.mapper;
 
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.Criteria;
 
 import java.util.List;
 
 public interface BoardMapper {
 
     public List<BoardVO> getList();
+
+    public List<BoardVO> getListWithPaging(Criteria cri);
 
     //insert만 처리되고 생성된 PK값을 알 필요가 없는 경우
     public void insert(BoardVO board);

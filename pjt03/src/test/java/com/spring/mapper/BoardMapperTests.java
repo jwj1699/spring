@@ -1,6 +1,7 @@
 package com.spring.mapper;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.Criteria;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import org.junit.Test;
@@ -8,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/root-context.xml")
@@ -56,7 +59,7 @@ public class BoardMapperTests {
         log.info("DELETE COUNT: " + mapper.delete(3L));
     }
 
-    @Test
+
     public void testUpdate(){
         BoardVO board = new BoardVO();
         board.setBno(5L);
@@ -66,5 +69,13 @@ public class BoardMapperTests {
 
         int count = mapper.update(board);
         log.info("UPDATE COUNT: " + count);
+    }
+
+    @Test
+    public void testPaging(){
+        Criteria cri = new Criteria(3,20);
+        List<BoardVO> list = mapper.getListWithPaging(cri);
+
+        list.forEach(board -> log.info(board));
     }
 }

@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.Criteria;
 import com.spring.mapper.BoardMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -44,9 +45,9 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public List<BoardVO> getList() {
-        log.info("getList()");
+    public List<BoardVO> getList(Criteria cri) {
+        log.info("getList() "+cri);
 
-        return mapper.getList();
+        return mapper.getListWithPaging(cri);
     }
 }

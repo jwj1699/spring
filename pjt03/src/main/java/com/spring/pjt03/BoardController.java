@@ -1,6 +1,7 @@
 package com.spring.pjt03;
 
 import com.spring.domain.BoardVO;
+import com.spring.domain.Criteria;
 import com.spring.service.BoardService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -21,10 +22,10 @@ public class BoardController {
     private BoardService service;
 
     @GetMapping("/list")
-    public void list(Model model){
+    public void list(Criteria cri, Model model){
         log.info("/list");
 
-        model.addAttribute("list", service.getList());
+        model.addAttribute("list", service.getList(cri));
     }
 
     @GetMapping("/register")

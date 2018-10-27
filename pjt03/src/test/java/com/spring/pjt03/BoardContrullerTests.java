@@ -31,8 +31,11 @@ public class BoardContrullerTests {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
     }
 
+    @Test
     public void testList() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
+                .param("PageNum","2")
+                .param("amount","20"))
                 .andReturn()
                 .getModelAndView()
                 .getModelMap();
@@ -66,7 +69,6 @@ public class BoardContrullerTests {
         log.info(resultPage);
     }
 
-    @Test
     public void testRemove() throws Exception{
         //삭제전 디비에서 게시물 확인
         String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
