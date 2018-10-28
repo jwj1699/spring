@@ -20,6 +20,8 @@
             <div class="panel-body">
 
                 <form role="form" action="/board/modify" method="post">
+                    <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>"/>
+                    <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>"/>
                     <div class="form-group">
                         <label>Bno</label>
                         <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>" readonly="readonly">
@@ -67,7 +69,14 @@
             }else if(operation === 'list'){
                 //move to list
                 self.location = "/board/list";
-                return;
+                //글 수정페이지에서 list버튼시 이전페이지로 이동(값 임시저장->내용지우기->값넣기)
+                formObj.attr("action", "/board/list").attr("method","get");
+                var pageNumTag = $("input[name='pageNum']").clone();
+                var amountTag = $("input[name='amount']").clone();
+
+                formObj.empty();
+                formObj.append(pageNumTag);
+                formObj.append(amountTag);
             }
             formObj.submit();
         });

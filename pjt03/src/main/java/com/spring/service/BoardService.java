@@ -15,5 +15,7 @@ public interface BoardService {
 
     public boolean remove(Long bno);
 
+    public int getTotal(Criteria cri);
+
     public List<BoardVO> getList(Criteria cri);
 }
