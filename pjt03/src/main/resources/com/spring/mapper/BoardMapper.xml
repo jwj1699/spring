@@ -4,8 +4,28 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.mapper.BoardMapper">
 
+    <sql id="criteria">
+        <trim prefix="(" suffix=") AND " prefixOverrides="OR">
+            <foreach item="type" collection="typeArr">
+                <trim prefix="OR">
+                    <choose>
+                        <when test="type == 'T'.toString()">
+                            title LIKE '%'||#{keyword}||'%'
+                        </when>
+                        <when test="type == 'C'.toString()">
+                            content LIKE '%'||#{keyword}||'%'
+                        </when>
+                        <when test="type == 'W'.toString()">
+                            writer LIKE '%'||#{keyword}||'%'
+                        </when>
+                    </choose>
+                </trim>
+            </foreach>
+        </trim>
+    </sql>
+
     <select id="getTotalCount" resultType="int">
-        SELECT count(*) from tbl_board WHERE bno > 0
+        SELECT count(*) from tbl_board WHERE <include refid="criteria"/> bno > 0
     </select>
 
     <select id="getList" resultType="com.spring.domain.BoardVO">
@@ -25,6 +45,7 @@
             FROM
                 tbl_board
             WHERE
+        ]]>     <include refid="criteria"/><![CDATA[
                 rownum <= #{pageNum} * #{amount}
             )
         WHERE rn > (#{pageNum} - 1) * #{amount}

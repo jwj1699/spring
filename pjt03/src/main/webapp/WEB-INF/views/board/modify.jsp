@@ -22,6 +22,8 @@
                 <form role="form" action="/board/modify" method="post">
                     <input type="hidden" name="pageNum" value="<c:out value="${cri.pageNum}"/>"/>
                     <input type="hidden" name="amount" value="<c:out value="${cri.amount}"/>"/>
+                    <input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>
+                    <input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
                     <div class="form-group">
                         <label>Bno</label>
                         <input class="form-control" name="bno" value="<c:out value="${board.bno}"/>" readonly="readonly">
@@ -73,10 +75,14 @@
                 formObj.attr("action", "/board/list").attr("method","get");
                 var pageNumTag = $("input[name='pageNum']").clone();
                 var amountTag = $("input[name='amount']").clone();
+                var type = $("input[name='type']").clone();
+                var keyword = $("input[name='keyword']").clone();
 
                 formObj.empty();
                 formObj.append(pageNumTag);
                 formObj.append(amountTag);
+                formObj.append(type);
+                formObj.append(keyword);
             }
             formObj.submit();
         });
