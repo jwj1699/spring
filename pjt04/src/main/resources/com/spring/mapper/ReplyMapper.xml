@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.mapper.ReplyMapper">
+
+    <insert id="insert">
+        INSERT INTO tbl_reply (rno, bno, reply, replyer) VALUES(seq_reply.nextval, #{bno}, #{reply}, #{replyer})
+    </insert>
+
+    <select id="read" resultType="com.spring.domain.ReplyVO">
+        SELECT * FROM tbl_reply WHERE rno = #{rno}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM tbl_reply WHERE rno = #{rno}
+    </delete>
+
+    <update id="update">
+        UPDATE tbl_Reply SET reply=#{reply}, updatedate=sysdate WHERE rno=#{rno}
+    </update>
+
+    <select id="getListWithPaging" resultType="com.spring.domain.ReplyVO">
+        SELECT rno, bno, reply, replyer, replyDate, updateDate FROM tbl_reply WHERE bno = ${bno} ORDER BY rno ASC
+    </select>
+
+
+</mapper>
