@@ -1,5 +1,10 @@
 ﻿#스프링 
-버전 4
+환경 
++ 스프링4 
++ Mybatis
++ Oracle 11g
++ IntelliJ
+
 ###pjt01
 스프링
 
@@ -40,4 +45,25 @@
 + log4j
 + log4jdbc-log4j2
 + mybatis
++ hikariCP
+
+###pjt03
+
+스프링 게시판 + REST + Ajax
++ REST 테스트
++ REST 방식을 사용하여 Ajax 댓글처리
+    + Mybait 구현
+    + service & Controller 구현
+    + 댓글처리 테스트
+    + 댓글 페이징 처리
+    
+사용 버전 및 라이브러리
++ 스프링 5
++ mybatis
++ jackson
++ gson
++ junit
++ lombok
++ log4j
++ log4jdbc-log4j2
 + hikariCP
