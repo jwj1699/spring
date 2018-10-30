@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import com.spring.domain.Criteria;
+import com.spring.domain.ReplyPageVO;
 import com.spring.domain.ReplyVO;
 import com.spring.mapper.ReplyMapper;
 import lombok.Setter;
@@ -50,5 +51,13 @@ public class ReplyServiceimpl implements ReplyService {
         log.info("get Reply List of a Board " + bno);
 
         return mapper.getListWithPaging(cri, bno);
+    }
+
+    @Override
+    public ReplyPageVO getListPage(Criteria cri, Long bno) {
+
+        return new ReplyPageVO(
+                mapper.getCountByBno(bno),
+                mapper.getListWithPaging(cri,bno));
     }
 }

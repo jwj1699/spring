@@ -1,6 +1,7 @@
 package com.spring.pjt04;
 
 import com.spring.domain.Criteria;
+import com.spring.domain.ReplyPageVO;
 import com.spring.domain.ReplyVO;
 import com.spring.service.ReplyService;
 import lombok.AllArgsConstructor;
@@ -36,13 +37,11 @@ public class ReplyController {
     @GetMapping(value = "/pages/{bno}/{page}", produces = {
             MediaType.APPLICATION_XML_VALUE,
             MediaType.APPLICATION_JSON_UTF8_VALUE})
-    public ResponseEntity<List<ReplyVO>> getLIst(
-            @PathVariable("page") int page,
-            @PathVariable("bno") Long bno){
+    public ResponseEntity<ReplyPageVO> getLIst(@PathVariable("page") int page,@PathVariable("bno") Long bno){
         log.info("getList......................");
         Criteria cri = new Criteria(page,10);
 
-        return new ResponseEntity<>(service.getList(cri,bno),HttpStatus.OK);
+        return new ResponseEntity<>(service.getListPage(cri,bno),HttpStatus.OK);
     }
 
     @GetMapping(value = "/{rno}", produces = {

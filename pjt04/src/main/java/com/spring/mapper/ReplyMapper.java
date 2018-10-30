@@ -18,4 +18,6 @@ public interface ReplyMapper {
 
     //두개이상 파라미터를 받는 방법중 하나인 @Param (다른방법은 객체로 구성)
     public List<ReplyVO> getListWithPaging(@Param("cri")Criteria cri, @Param("bno") Long bno);
+
+    public int getCountByBno(Long bno);
 }

@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import com.spring.domain.Criteria;
+import com.spring.domain.ReplyPageVO;
 import com.spring.domain.ReplyVO;
 
 import java.util.List;
@@ -16,4 +17,6 @@ public interface ReplyService {
     public int remove(Long bno);
 
     public List<ReplyVO> getList(Criteria cri, Long bno);
+
+    public ReplyPageVO getListPage(Criteria cri, Long bno);
 }
