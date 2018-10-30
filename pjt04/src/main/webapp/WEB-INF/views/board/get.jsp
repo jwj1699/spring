@@ -55,8 +55,59 @@
 <!-- /.row -->
 <%@include file="../includes/footer.jsp"%>
 
+<script type="text/javascript" src="/resources/js/reply.js"/>
+
 <script type="text/javascript">
     $(document).ready(function () {
+
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        console.log("==============");
+        console.log("JS TEST");
+        var bnoValue = '<c:out value="${board.bno}"/>';
+
+        /*//for replyService add test
+        replyService.add(
+            {reply:"JS Test", replyer:"tester", bno:bnoValue},
+            function (result) {
+                alert("RESULT : " + result);
+            }
+        );*/
+
+        /*//reply List test
+        replyService.getList({bno:bnoValue, page:1}, function (list) {
+            for(var i =0, len = list.length||0; i<len; i++){
+                console.log(list[i])
+            }
+        });*/
+
+        /*//reply delete test
+        replyService.remove(22, function (count) {
+            console.log(count);
+
+            if(count == "success"){
+                alert("REMOVED");
+            }
+        }, function (err) {
+                alert('ERROR.....');
+        });*/
+
+        /*//reply modify test
+        replyService.update(
+            {rno: 21, bno: bnoValue, reply: "Modifide Reply..."},
+            function (result) {
+                alert("수정완료");
+            }
+        );*/
+
+        //특정 댓글 조회
+        replyService.get(21, function (data) {
+            console.log(data);
+        })
 
         var operForm = $("#operForm");
 
