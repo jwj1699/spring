@@ -48,6 +48,7 @@ public class BoardMapperTests {
         log.info(board);
     }
 
+    @Test
     public void testRead(){
 
         BoardVO board = mapper.read(5L);
@@ -78,7 +79,7 @@ public class BoardMapperTests {
         list.forEach(board -> log.info(board));
     }
 
-    @Test
+
     public void testSearch(){
 
         Criteria cri = new Criteria();
