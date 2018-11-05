@@ -59,6 +59,8 @@
     + service & Controller 구현
     + 댓글처리 테스트
     + 댓글 페이징 처리
+
++ 댓글 등록시 댓글 수 트랜잭션처리 
     
 #### 사용 버전 및 라이브러리  ####
 + 스프링 5
@@ -70,3 +72,13 @@
 + log4j
 + log4jdbc-log4j2
 + hikariCP
+
+
+## pjt05 ##
+
+AOP, 트랜잭션
++ before, AfterThrowing, Arount
++ @Transactional
+
+#### 추가사용 라이브러리  ####
++ aspectj
